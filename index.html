@@ -125,6 +125,28 @@ footer a{color:#c9d3e8;margin-right:18px}
   h2{font-size:34px}
   .contact{padding:32px 22px}
 }
+
+/* Demande d'essai */
+.ess-ov{position:fixed;inset:0;background:rgba(5,11,22,.6);z-index:100;display:none;align-items:flex-end;justify-content:center}
+.ess-ov.on{display:flex}
+@media(min-width:700px){.ess-ov{align-items:center}}
+.ess{background:#fff;color:#0b1630;width:100%;max-width:520px;max-height:92vh;overflow:auto;border-radius:20px 20px 0 0;padding:20px 18px 24px}
+@media(min-width:700px){.ess{border-radius:20px}}
+.ess h3{font-family:'Barlow Condensed',sans-serif;font-size:28px;margin:0 0 4px}
+.ess .sub{font-size:13px;color:#536178;margin:0 0 14px}
+.ess label{display:block;font-size:12px;font-weight:800;color:#33405a;margin:10px 0 4px}
+.ess input,.ess select{width:100%;border:1.5px solid #d5dbe7;border-radius:12px;padding:11px 12px;font:inherit;font-size:15px;min-height:46px;background:#fff;color:#0b1630}
+.ess .row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ess .pal{display:grid;grid-template-columns:repeat(10,1fr);gap:6px}
+.ess .pal button{aspect-ratio:1;border-radius:50%;border:2px solid transparent;padding:0;cursor:pointer;color:#fff;font-weight:900;font-size:11px;box-shadow:0 1px 3px rgba(0,0,0,.25)}
+.ess .pal button.on{border:3px solid #0b1630}
+.ess .hint{font-size:11.5px;color:#6b7690;margin-top:5px}
+.ess .act{display:flex;gap:10px;margin-top:18px}
+.ess .act button{flex:1;min-height:48px;border-radius:12px;border:0;font:inherit;font-weight:800;font-size:15px;cursor:pointer}
+.ess .go{background:#D4AF37;color:#0b1630}.ess .no{background:#e6eaf2;color:#0b1630}
+.ess .err{color:#b42318;font-size:13px;font-weight:700;margin-top:10px;display:none}
+.ess .ok{text-align:center;padding:20px 0}
+.ess .hp{position:absolute;left:-5000px;width:1px;height:1px;opacity:0}
 </style>
 </head>
 <body>
@@ -149,7 +171,7 @@ footer a{color:#c9d3e8;margin-right:18px}
       <h1>Tout votre club dans une seule appli.</h1>
       <p>Licences, équipes, convocations, planning, buvette, sponsors et comptabilité. Fini les tableurs, les papiers et les groupes WhatsApp éparpillés.</p>
       <div class="cta">
-        <a class="btn gold" href="#contact">Essai gratuit 30 jours</a>
+        <a class="btn gold" href="#essai" data-essai>Essai gratuit 30 jours</a>
         <a class="btn line" href="#modules">Voir les modules</a>
       </div>
       <div class="small">Sans carte bancaire · Toutes les fonctions ouvertes pendant l'essai</div>
@@ -241,13 +263,13 @@ footer a{color:#c9d3e8;margin-right:18px}
         <h3>Standard</h3>
         <div class="price">200 € <small>/ an</small></div>
         <div class="l">Licences et inscriptions en ligne (jusqu'à 300 par saison)<br>Équipes, convocations, planning<br>Accès familles et coachs, messagerie<br>Buvette et inventaire<br>Suivi des sponsors</div>
-        <a class="btn" href="#contact">Démarrer l'essai</a>
+        <a class="btn" href="#essai" data-essai>Démarrer l'essai</a>
       </div>
       <div class="plan pro">
         <h3>Premium <span class="pill">Le plus complet</span></h3>
         <div class="price">300 € <small>/ an</small></div>
         <div class="l">Tout le Standard, sans limite de licences<br>Comptabilité complète, reçus CERFA, bilan PDF, exports<br>Buvette et stock reliés à la comptabilité<br>Factures sponsors<br>Séances d'entraînement animées<br>Support prioritaire : un problème signalé est pris en charge en priorité</div>
-        <a class="btn" href="#contact">Démarrer l'essai</a>
+        <a class="btn" href="#essai" data-essai>Démarrer l'essai</a>
       </div>
     </div>
     <div class="small" style="margin-top:16px">TVA non applicable, art. 293 B du CGI.</div>
@@ -283,7 +305,8 @@ footer a{color:#c9d3e8;margin-right:18px}
         <p>Écrivez-moi ou appelez-moi : je crée votre club et je vous explique comment ça marche.</p>
       </div>
       <div class="cta">
-        <a class="btn gold" href="mailto:hachemi-sidahmed@outlook.fr">Écrire un email</a>
+        <a class="btn gold" href="#essai" data-essai>Demander un essai</a>
+        <a class="btn line" href="mailto:hachemi-sidahmed@outlook.fr">Écrire un email</a>
         <a class="btn line" href="#contact" id="tel-btn" data-a="MDYgMDcgNTYgMjcgNTY=" onclick="event.preventDefault();var t=this;if(t.dataset.on){t.textContent='Afficher le numéro';delete t.dataset.on;}else{t.textContent=atob(t.dataset.a);t.dataset.on=1;}">Afficher le numéro</a>
       </div>
     </div>
@@ -307,6 +330,91 @@ ph.querySelectorAll('.ph-n button').forEach(function(b){b.addEventListener('clic
 ph.querySelectorAll('.ph-n button').forEach(function(x){x.classList.toggle('on',x===b)});
 ph.querySelectorAll('.ph-p').forEach(function(p){p.classList.toggle('on',+p.dataset.p===i)});
 document.getElementById('ph-ti').textContent=ti[i];});});})();
+</script>
+
+<div class="ess-ov" id="ess-ov" role="dialog" aria-modal="true" aria-labelledby="ess-t">
+  <form class="ess" id="ess-form" novalidate>
+    <h3 id="ess-t">Essai gratuit 30 jours</h3>
+    <p class="sub">Remplissez votre club : je le crée et je vous envoie votre accès par SMS.</p>
+    <label for="e-club">Nom du club</label><input id="e-club" maxlength="80" required autocomplete="organization">
+    <div class="row2">
+      <div><label for="e-sport">Sport</label><select id="e-sport"><option>Basket</option><option>Football</option><option>Handball</option><option>Volley</option><option>Rugby</option><option>Tennis</option><option>Badminton</option><option>Natation</option><option>Athlétisme</option><option>Judo</option><option>Autre</option></select></div>
+      <div><label for="e-nb">Licenciés (environ)</label><input id="e-nb" inputmode="numeric" maxlength="4" placeholder="150"></div>
+    </div>
+    <label for="e-ville">Ville</label><input id="e-ville" maxlength="60" autocomplete="address-level2">
+    <label>Couleurs du club (2 maximum)</label>
+    <div class="pal" id="e-pal"></div>
+    <div class="hint" id="e-pal-etat">Touchez 1 ou 2 couleurs : la 1re est la couleur principale.</div>
+    <label for="e-nom">Votre nom</label><input id="e-nom" maxlength="60" required autocomplete="name">
+    <label for="e-tel">Votre téléphone</label><input id="e-tel" type="tel" maxlength="20" required autocomplete="tel" placeholder="06 12 34 56 78">
+    <label for="e-mail">E-mail (facultatif)</label><input id="e-mail" type="email" maxlength="100" autocomplete="email">
+    <input class="hp" id="e-site" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <div class="err" id="e-err"></div>
+    <div class="act"><button type="button" class="no" id="e-annuler">Annuler</button><button type="submit" class="go" id="e-envoyer">Envoyer</button></div>
+  </form>
+</div>
+<script type="module">
+const PAL=["#a5272f","#911820","#6b1f24","#d31724","#a54d27","#913c18","#6b361f","#ca4c16","#a16826","#915818","#6b471f","#aa6313","#1f844b","#168847","#1f6b40","#0f8542","#1f8469","#158466","#1f6b57","#0f8566","#208188","#168088","#1f666b","#0f828a","#275ea5","#184c91","#1f406b","#1769d3","#272fa5","#182091","#1f246b","#1724d3","#6627a5","#541891","#451f6b","#7517d3","#a5276e","#91185c","#6b1f4a","#d31782","#1a2e5a","#0f1c33","#334155","#475569","#1f2937","#44403c","#7c2d12","#14532d","#4c1d95","#831843"];
+const $=(id)=>document.getElementById(id);
+const ov=$("ess-ov"), form=$("ess-form");
+let choix=[];
+function pal(){
+  const box=$("e-pal"); box.innerHTML="";
+  PAL.forEach((c)=>{
+    const b=document.createElement("button"); b.type="button"; b.style.background=c; b.setAttribute("aria-label","Couleur "+c);
+    const i=choix.indexOf(c); if(i>=0){ b.className="on"; b.textContent=String(i+1); }
+    b.onclick=()=>{ const k=choix.indexOf(c); if(k>=0) choix.splice(k,1); else { if(choix.length>=2) choix.pop(); choix.push(c); } pal(); };
+    box.appendChild(b);
+  });
+  $("e-pal-etat").textContent=choix.length?("Principale : "+choix[0]+(choix[1]?" · secondaire : "+choix[1]:"")):"Touchez 1 ou 2 couleurs : la 1re est la couleur principale.";
+}
+function ouvrir(e){ if(e) e.preventDefault(); pal(); ov.classList.add("on"); document.body.style.overflow="hidden"; setTimeout(()=>$("e-club").focus(),50); }
+function fermer(){ ov.classList.remove("on"); document.body.style.overflow=""; }
+document.querySelectorAll("[data-essai]").forEach((a)=>a.addEventListener("click",ouvrir));
+$("e-annuler").onclick=fermer;
+ov.addEventListener("click",(e)=>{ if(e.target===ov) fermer(); });
+document.addEventListener("keydown",(e)=>{ if(e.key==="Escape") fermer(); });
+if(location.hash==="#essai") ouvrir();
+let fb=null;
+async function firestore(){
+  if(fb) return fb;
+  const { initializeApp } = await import("https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js");
+  const fs = await import("https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js");
+  const app = initializeApp({ apiKey:"AIzaSyAv5azCx_NU0kgRflnFBetaqqWN7ahi8TQ", authDomain:"asmb-app.firebaseapp.com", projectId:"asmb-app", storageBucket:"asmb-app.firebasestorage.app", messagingSenderId:"786817375628", appId:"1:786817375628:web:3db013af1adab9e8ab8aa9" });
+  try{
+    const ac = await import("https://www.gstatic.com/firebasejs/10.7.1/firebase-app-check.js");
+    ac.initializeAppCheck(app,{ provider:new ac.ReCaptchaEnterpriseProvider("6Le30N8tAAAAAGUJks6zaN09Rbn8B6L-cQRC5Jwp"), isTokenAutoRefreshEnabled:true });
+  }catch(e){}
+  fb={ db:fs.getFirestore(app), fs };
+  return fb;
+}
+function erreur(t){ const e=$("e-err"); e.textContent=t; e.style.display=t?"block":"none"; }
+form.addEventListener("submit",async(e)=>{
+  e.preventDefault(); erreur("");
+  if($("e-site").value) { fermer(); return; } // robot
+  const club=$("e-club").value.trim(), nom=$("e-nom").value.trim();
+  const tel=$("e-tel").value.replace(/[\s.\-()]/g,"");
+  const nb=parseInt($("e-nb").value,10);
+  if(club.length<2) return erreur("Indiquez le nom du club.");
+  if(nom.length<2) return erreur("Indiquez votre nom.");
+  if(!/^[+]?[0-9]{9,15}$/.test(tel)) return erreur("Numéro de téléphone invalide.");
+  const btn=$("e-envoyer"); btn.disabled=true; btn.textContent="Envoi…";
+  try{
+    const { db, fs } = await firestore();
+    await fs.addDoc(fs.collection(db,"demandes_essai"),{
+      club, sport:$("e-sport").value.toLowerCase(), ville:$("e-ville").value.trim(),
+      licencies:Number.isFinite(nb)&&nb>=0&&nb<=5000?nb:0,
+      couleur:choix[0]||null, couleur2:choix[1]||null,
+      nom, tel, email:$("e-mail").value.trim(), statut:"nouvelle", at:fs.serverTimestamp()
+    });
+    form.innerHTML='<div class="ok"><h3>Demande envoyée ✓</h3><p class="sub">Merci '+nom.replace(/[<>&"]/g,"").split(" ")[0]+'. Je crée votre club et je vous envoie votre accès par SMS très vite.</p><div class="act"><button type="button" class="go" id="e-fin">Fermer</button></div></div>';
+    $("e-fin").onclick=fermer;
+  }catch(err){
+    btn.disabled=false; btn.textContent="Envoyer";
+    erreur("L'envoi n'a pas fonctionné. Réessayez, ou appelez-moi depuis la rubrique Contact.");
+    console.log(err);
+  }
+});
 </script>
 </body>
 </html>
