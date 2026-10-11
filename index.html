@@ -156,6 +156,14 @@ footer a{color:#c9d3e8;margin-right:18px}
   .contact .cta>.btn{width:100%}
   .telgrp>.btn{flex:1}
 }
+
+.ess .palbtn{width:100%;display:flex;align-items:center;gap:10px;border:1.5px solid #d5dbe7;border-radius:12px;padding:10px 12px;min-height:46px;background:#fff;font:inherit;font-size:15px;color:#0b1630;cursor:pointer;text-align:left}
+.ess .palbtn .palsw{display:flex;gap:4px}
+.ess .palbtn .palsw i{width:22px;height:22px;border-radius:6px;display:block}
+.ess .palbtn #e-pal-lbl{flex:1}
+.ess .palchev{transition:transform .2s;color:#6b7690}
+.ess .palbtn[aria-expanded="true"] .palchev{transform:rotate(180deg)}
+#e-pal-zone{margin-top:8px}
 </style>
 </head>
 <body>
@@ -368,8 +376,11 @@ document.getElementById('ph-ti').textContent=ti[i];});});})();
     </div>
     <label for="e-ville">Ville</label><input id="e-ville" maxlength="60" autocomplete="address-level2">
     <label>Couleurs du club (2 maximum)</label>
-    <div class="pal" id="e-pal"></div>
-    <div class="hint" id="e-pal-etat">Touchez 1 ou 2 couleurs : la 1re est la couleur principale.</div>
+    <button type="button" class="palbtn" id="e-pal-btn" aria-expanded="false" aria-controls="e-pal-zone"><span class="palsw" id="e-pal-sw"></span><span id="e-pal-lbl">Choisir les couleurs</span><span class="palchev">▾</span></button>
+    <div id="e-pal-zone" hidden>
+      <div class="pal" id="e-pal"></div>
+      <div class="hint" id="e-pal-etat">Touchez 1 ou 2 couleurs : la 1re est la couleur principale.</div>
+    </div>
     <label for="e-nom">Votre nom</label><input id="e-nom" maxlength="60" required autocomplete="name">
     <label for="e-tel">Votre téléphone</label><input id="e-tel" type="tel" maxlength="20" required autocomplete="tel" placeholder="06 12 34 56 78">
     <label for="e-mail">E-mail (facultatif)</label><input id="e-mail" type="email" maxlength="100" autocomplete="email">
@@ -392,7 +403,13 @@ function pal(){
     box.appendChild(b);
   });
   $("e-pal-etat").textContent=choix.length?("Principale : "+choix[0]+(choix[1]?" · secondaire : "+choix[1]:"")):"Touchez 1 ou 2 couleurs : la 1re est la couleur principale.";
+  $("e-pal-sw").innerHTML=choix.map((c)=>'<i style="background:'+c+'"></i>').join("");
+  $("e-pal-lbl").textContent=choix.length===0?"Choisir les couleurs":(choix.length===1?"1 couleur choisie":"2 couleurs choisies");
 }
+$("e-pal-btn").addEventListener("click",()=>{
+  const z=$("e-pal-zone"), open=z.hidden;
+  z.hidden=!open; $("e-pal-btn").setAttribute("aria-expanded",open?"true":"false");
+});
 function ouvrir(e){ if(e) e.preventDefault(); pal(); ov.classList.add("on"); document.body.style.overflow="hidden"; setTimeout(()=>$("e-club").focus(),50); }
 function fermer(){ ov.classList.remove("on"); document.body.style.overflow=""; }
 document.querySelectorAll("[data-essai]").forEach((a)=>a.addEventListener("click",ouvrir));
