@@ -307,7 +307,23 @@ footer a{color:#c9d3e8;margin-right:18px}
       <div class="cta">
         <a class="btn gold" href="#essai" data-essai>Demander un essai</a>
         <a class="btn line" href="mailto:hachemi-sidahmed@outlook.fr?subject=Demande%20d%27informations%20General%20Manager&body=Bonjour%2C%0A%0AJe%20souhaite%20en%20savoir%20plus%20sur%20General%20Manager%20pour%20mon%20club.%0A%0ANom%20du%20club%20%3A%0ASport%20%3A%0AVille%20%3A%0ANombre%20de%20licenci%C3%A9s%20%28environ%29%20%3A%0AMon%20nom%20%3A%0AMon%20r%C3%B4le%20au%20club%20%28pr%C3%A9sident%2C%20secr%C3%A9taire...%29%20%3A%0AMon%20t%C3%A9l%C3%A9phone%20%3A%0A%0AMa%20question%20%3A%0A%0A%0AMerci%2C%0A">Écrire un email</a>
-        <a class="btn line" href="#contact" id="tel-btn" data-a="MDYgMDcgNTYgMjcgNTY=" onclick="event.preventDefault();var t=this;if(t.dataset.on){t.textContent='Afficher le numéro';delete t.dataset.on;}else{t.textContent=atob(t.dataset.a);t.dataset.on=1;}">Afficher le numéro</a>
+        <a class="btn line" href="#contact" id="tel-btn" data-a="MDYgMDcgNTYgMjcgNTY=" data-b="KzMzNjA3NTYyNzU2">Afficher le numéro</a>
+        <button type="button" id="tel-masquer" style="display:none;background:none;border:0;color:#a9b6d1;font:inherit;font-size:13px;text-decoration:underline;cursor:pointer;min-height:44px">Masquer le numéro</button>
+        <script>
+        (function(){
+          var a=document.getElementById("tel-btn"), m=document.getElementById("tel-masquer");
+          a.addEventListener("click",function(e){
+            if(a.dataset.on) return; // numéro affiché : le lien appelle
+            e.preventDefault();
+            a.textContent="📞 "+atob(a.dataset.a);
+            a.href="tel:"+atob(a.dataset.b);
+            a.dataset.on=1; m.style.display="inline-block";
+          });
+          m.addEventListener("click",function(){
+            a.textContent="Afficher le numéro"; a.href="#contact"; delete a.dataset.on; m.style.display="none";
+          });
+        })();
+        </script>
       </div>
     </div>
   </div>
