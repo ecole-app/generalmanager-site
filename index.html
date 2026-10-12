@@ -388,6 +388,15 @@ document.getElementById('ph-ti').textContent=ti[i];});});})();
       <div class="pal" id="e-pal"></div>
       <div class="hint" id="e-pal-etat">Touchez 1 ou 2 couleurs : la 1re est la couleur principale.</div>
     </div>
+    <label>Réseaux et boutique <span style="font-weight:600;color:#6b7690">(facultatif)</span></label>
+    <button type="button" class="palbtn" id="e-liens-btn" aria-expanded="false" aria-controls="e-liens-zone"><span id="e-liens-lbl" style="flex:1">Facebook, Instagram, site, boutique…</span><span class="palchev">▾</span></button>
+    <div id="e-liens-zone" hidden style="margin-top:4px">
+      <label for="e-l-facebook">Facebook</label><input id="e-l-facebook" maxlength="200" inputmode="url" autocapitalize="off" placeholder="facebook.com/monclub">
+      <label for="e-l-instagram">Instagram</label><input id="e-l-instagram" maxlength="200" inputmode="url" autocapitalize="off" placeholder="@monclub">
+      <label for="e-l-tiktok">TikTok</label><input id="e-l-tiktok" maxlength="200" inputmode="url" autocapitalize="off" placeholder="@monclub">
+      <label for="e-l-site">Site internet</label><input id="e-l-site" maxlength="200" inputmode="url" autocapitalize="off" placeholder="monclub.fr">
+      <label for="e-l-boutique">Boutique du club</label><input id="e-l-boutique" maxlength="200" inputmode="url" autocapitalize="off" placeholder="lien de la boutique">
+    </div>
     <label for="e-nom">Votre nom</label><input id="e-nom" maxlength="60" required autocomplete="name">
     <label for="e-tel">Votre téléphone</label><input id="e-tel" type="tel" maxlength="20" required autocomplete="tel" placeholder="06 12 34 56 78">
     <label for="e-mail">E-mail (facultatif)</label><input id="e-mail" type="email" maxlength="100" autocomplete="email">
@@ -417,6 +426,21 @@ $("e-pal-btn").addEventListener("click",()=>{
   const z=$("e-pal-zone"), open=z.hidden;
   z.hidden=!open; $("e-pal-btn").setAttribute("aria-expanded",open?"true":"false");
 });
+$("e-liens-btn").addEventListener("click",()=>{
+  const z=$("e-liens-zone"), open=z.hidden;
+  z.hidden=!open; $("e-liens-btn").setAttribute("aria-expanded",open?"true":"false");
+});
+// Même règle que dans l'appli : lien complet, nom de domaine, ou @compte.
+const LIENS={facebook:"https://www.facebook.com/",instagram:"https://www.instagram.com/",tiktok:"https://www.tiktok.com/@",site:"",boutique:""};
+function lien(k,v){
+  v=String(v||"").trim(); if(!v) return "";
+  if(/\s/.test(v)) return null;
+  if(/^https?:\/\//i.test(v)) return v.length<=200?v:null;
+  if(/^(www\.)?[a-z0-9-]+(\.[a-z0-9-]+)*\.[a-z]{2,}(\/.*)?$/i.test(v)) return ("https://"+v).length<=200?"https://"+v:null;
+  if(!LIENS[k]) return null;
+  v=v.replace(/^@/,"");
+  return /^[a-z0-9._-]{1,60}$/i.test(v)?LIENS[k]+v:null;
+}
 function ouvrir(e){ if(e) e.preventDefault(); pal(); ov.classList.add("on"); document.body.style.overflow="hidden"; setTimeout(()=>$("e-club").focus(),50); }
 function fermer(){ ov.classList.remove("on"); document.body.style.overflow=""; }
 document.querySelectorAll("[data-essai]").forEach((a)=>a.addEventListener("click",ouvrir));
@@ -447,6 +471,9 @@ form.addEventListener("submit",async(e)=>{
   if(club.length<2) return erreur("Indiquez le nom du club.");
   if(nom.length<2) return erreur("Indiquez votre nom.");
   if(!/^[+]?[0-9]{9,15}$/.test(tel)) return erreur("Numéro de téléphone invalide.");
+  const liens={}; const faux=[];
+  Object.keys(LIENS).forEach((k)=>{ const v=lien(k,$("e-l-"+k).value); if(v===null) faux.push(k); else if(v) liens[k]=v; });
+  if(faux.length){ $("e-liens-zone").hidden=false; $("e-liens-btn").setAttribute("aria-expanded","true"); return erreur("Lien non reconnu ("+faux.join(", ")+") : collez l'adresse complète, ou laissez vide."); }
   const btn=$("e-envoyer"); btn.disabled=true; btn.textContent="Envoi…";
   try{
     const { db, fs } = await firestore();
@@ -454,6 +481,7 @@ form.addEventListener("submit",async(e)=>{
       club, sport:$("e-sport").value.toLowerCase(), ville:$("e-ville").value.trim(),
       licencies:Number.isFinite(nb)&&nb>=0&&nb<=5000?nb:0,
       couleur:choix[0]||null, couleur2:choix[1]||null,
+      ...(Object.keys(liens).length?{liens}:{}),
       nom, tel, email:$("e-mail").value.trim(), statut:"nouvelle", at:fs.serverTimestamp()
     });
     form.innerHTML='<div class="ok"><h3>Demande envoyée ✓</h3><p class="sub">Merci '+nom.replace(/[<>&"]/g,"").split(" ")[0]+'. Je crée votre club et je vous envoie votre accès par SMS très vite.</p><div class="act"><button type="button" class="go" id="e-fin">Fermer</button></div></div>';
