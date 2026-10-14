@@ -379,7 +379,7 @@ footer a{color:#c9d3e8;margin-right:18px}
 <script>
 (function(){
 if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion:reduce)').matches)return;
-var els=[].slice.call(document.querySelectorAll('.hero>div,section .eyebrow,section h2,section .wrap>p,.card,.plan,details,.contact'));
+var els=[].slice.call(document.querySelectorAll('.hero>div:last-child,section .wrap>p,.card,.plan,details,.contact'));
 els.forEach(function(el){
   var i=[].filter.call(el.parentNode.children,function(c){return els.indexOf(c)>-1}).indexOf(el);
   el.style.setProperty('--rv',Math.min(i,5)*90+'ms');
