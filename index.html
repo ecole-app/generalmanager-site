@@ -260,11 +260,51 @@ footer a{color:#c9d3e8;margin-right:18px}
 <section id="video" style="padding:8px 0 40px">
   <div class="wrap">
     <div class="eyebrow">General Manager en 48 secondes</div>
-    <iframe id="gm-video" src="video-gm.html" title="General Manager en 48 secondes" loading="lazy" style="display:block;width:100%;height:640px;border:0;margin-top:12px;border-radius:18px;background:#0A0F20" allow="autoplay"></iframe>
+    <div id="gm-video-box" style="position:relative;height:640px;margin-top:12px">
+      <iframe id="gm-video" src="video-gm.html" title="General Manager en 48 secondes" loading="lazy" style="display:block;width:100%;height:100%;border:0;border-radius:18px;background:#0A0F20" allow="autoplay"></iframe>
+      <button type="button" id="gm-video-x" aria-label="Fermer la vidéo" style="display:none;position:fixed;z-index:61;right:calc(10px + env(safe-area-inset-right,0px));width:28px;height:28px;border-radius:50%;border:0;background:#0A0F20;color:#fff;font-size:14px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.4)">✕</button>
+    </div>
     <p style="font-size:12px;color:#6b7280;margin:8px 0 0">Chiffres et noms donnés à titre d'exemple.</p>
   </div>
 </section>
-<script>window.addEventListener("message",function(e){var d=e.data;if(d&&typeof d.gmVideoH==="number"){var f=document.getElementById("gm-video");if(f&&e.source===f.contentWindow)f.style.height=Math.ceil(d.gmVideoH)+"px";}});</script>
+<script>
+(function(){
+  var f=document.getElementById("gm-video"), box=document.getElementById("gm-video-box"), x=document.getElementById("gm-video-x");
+  var hNormale=640, mini=false, ferme=false, lecture=false, fini=false, raf=0;
+  function largeurMini(){ return Math.min(300,Math.round(innerWidth*0.62)); }
+  function poser(){
+    var w=largeurMini(), bas="calc(12px + env(safe-area-inset-bottom,0px))";
+    f.style.cssText="display:block;border:0;background:#0A0F20;position:fixed;z-index:60;right:calc(10px + env(safe-area-inset-right,0px));bottom:"+bas+";width:"+w+"px;height:"+Math.round(w*0.5625)+"px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.45)";
+    x.style.display="block"; x.style.bottom="calc(12px + env(safe-area-inset-bottom,0px) + "+(Math.round(w*0.5625)-14)+"px)";
+  }
+  function normal(){
+    f.style.cssText="display:block;width:100%;height:100%;border:0;border-radius:18px;background:#0A0F20";
+    x.style.display="none";
+  }
+  function regler(){
+    raf=0;
+    var r=box.getBoundingClientRect();
+    var passe=r.bottom<40;   // la vidéo est sortie par le haut de l'écran
+    var doit=passe && lecture && !fini && !ferme;
+    if(doit!==mini){
+      mini=doit;
+      if(mini) poser(); else normal();
+      try{ f.contentWindow.postMessage({gmMini:mini},"*"); }catch(e){}
+    } else if(mini) poser();
+  }
+  function planifier(){ if(!raf) raf=requestAnimationFrame(regler); }
+  addEventListener("scroll",planifier,{passive:true}); addEventListener("resize",planifier);
+  x.addEventListener("click",function(){
+    ferme=true; try{ f.contentWindow.postMessage({gmPause:true},"*"); }catch(e){} planifier();
+  });
+  addEventListener("message",function(e){
+    if(e.source!==f.contentWindow) return;
+    var d=e.data||{};
+    if(typeof d.gmVideoH==="number" && !mini){ hNormale=Math.ceil(d.gmVideoH); box.style.height=hNormale+"px"; }
+    if(d.gmVideoEtat){ lecture=!!d.gmVideoEtat.lecture; fini=!!d.gmVideoEtat.fini; planifier(); }
+  });
+})();
+</script>
 
 <section id="modules">
   <div class="wrap">
