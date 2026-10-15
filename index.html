@@ -550,7 +550,7 @@ form.addEventListener("submit",async(e)=>{
       ...(Object.keys(liens).length?{liens}:{}),
       nom, tel, email:$("e-mail").value.trim(), statut:"nouvelle", at:fs.serverTimestamp()
     });
-    form.innerHTML='<div class="ok"><h3>Demande envoyée ✓</h3><p class="sub">Merci '+nom.replace(/[<>&"]/g,"").split(" ")[0]+'. Je crée votre club et je vous envoie votre accès par SMS très vite.</p><div class="act"><button type="button" class="go" id="e-fin">Fermer</button></div></div>';
+    form.innerHTML='<div class="ok"><h3>C\'est bien reçu !</h3><p class="sub">Merci '+nom.replace(/[<>&"]/g,"").split(" ")[0]+', votre demande est arrivée jusqu\'à moi. Je prépare votre club et je vous écris par SMS dès qu\'il est prêt, en général dans la journée.</p><div class="act"><button type="button" class="go" id="e-fin">Fermer</button></div></div>';
     $("e-fin").onclick=fermer;
   }catch(err){
     btn.disabled=false; btn.textContent="Envoyer";
