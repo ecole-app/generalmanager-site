@@ -1,10 +1,10 @@
-<title>General Manager en 48 secondes</title>
+<title>General Manager en 1 minute</title>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Barlow:wght@400;500;600;700&display=swap">
 <script>document.documentElement.setAttribute("data-theme","dark")</script>
 <style>
-/* Maquette d'une vidéo de 48 s : écran marine et or (couleurs de la plateforme), 7 scènes, chiffres d'exemple. */
+/* Maquette d'une vidéo de 63 s : écran marine et or (couleurs de la plateforme), 10 scènes, chiffres d'exemple. */
 :root{
   --bg:#F4F5F9; --fg:#101828; --mut:#566074; --card:#FFFFFF; --line:#DCE0EA;
   --acc:#8F6700; --accbg:#FFF3D1; --btn:#101C40; --btnfg:#FFFFFF; --focus:#1D4ED8;
@@ -162,6 +162,45 @@ h1{margin:0;font:800 clamp(30px,5vw,46px)/1 var(--disp);text-transform:uppercase
   animation:up .6s 4.6s both,ring 1.6s 5.3s 2}
 .pdf i{display:inline-block;width:1.3cqw;height:1.7cqw;border:.2cqw solid #17120A;border-radius:.2cqw}
 
+/* Scène : premiers pas */
+.pp{padding:2cqw 2.4cqw;border-radius:1.6cqw;background:#F6F8FC;color:#14203F;box-shadow:0 1.4cqw 3.4cqw rgba(0,0,0,.4);animation:slideR .7s .4s both}
+.pp .pt{display:flex;justify-content:space-between;font:800 1.9cqw var(--body)}.pp .pt span{font:700 1.6cqw var(--body);color:#5B6785;font-variant-numeric:tabular-nums}
+.pp .pb{height:1cqw;border-radius:99px;background:#DCE3F2;margin:1.2cqw 0 1.4cqw;overflow:hidden}.pp .pb i{display:block;height:100%;width:0;background:#E3B341;border-radius:99px}
+.pp .st{display:flex;align-items:center;gap:1.4cqw;padding:.85cqw 0;border-top:1px solid #E3E8F4;font:600 1.6cqw var(--body)}
+.pp .st .ck{flex:none;width:3cqw;height:3cqw;border-radius:50%;background:#DCE3F2;color:#fff;display:grid;place-items:center;font:700 1.4cqw var(--body)}
+.pp .st.f .ck{animation:ppck .35s var(--d) both}
+@keyframes ppck{to{background:#1A9B5C}}
+.pp .st small{display:block;font:500 1.15cqw var(--body);color:#5B6785}
+.pp .fin{margin-top:1.2cqw;padding:1.1cqw 1.6cqw;border-radius:1.2cqw;background:#C9F2DD;color:#0B5B36;font:700 1.7cqw var(--body);text-align:center;animation:pop .5s 5s both}
+/* Scène : couleurs du club */
+.cl{display:flex;align-items:center;justify-content:center;gap:4cqw}
+.cl .app{width:21cqw;border-radius:2.4cqw;background:#F6F8FC;color:#14203F;overflow:hidden;box-shadow:0 1.4cqw 3.4cqw rgba(0,0,0,.4);animation:slideR .7s .3s both}
+.cl .app .h{display:flex;align-items:center;gap:1.2cqw;padding:1.8cqw 1.8cqw;color:#fff;font:800 1.8cqw var(--body);animation:teinte 4.2s .8s both}
+.cl .app .lg{width:3.8cqw;height:3.8cqw;border-radius:50%;background:#fff;color:#14203F;display:grid;place-items:center;font:800 1.5cqw var(--disp)}
+.cl .app .b{padding:1.4cqw 1.8cqw;display:grid;gap:.9cqw}
+.cl .app .b i{display:block;height:1.1cqw;border-radius:99px;background:#DCE3F2}
+.cl .app .b em{display:inline-block;font-style:normal;padding:.7cqw 1.6cqw;border-radius:99px;color:#fff;font:700 1.3cqw var(--body);width:max-content;animation:teinte 4.2s .8s both}
+@keyframes teinte{0%{background:#1B7F3B}30%{background:#1B7F3B}38%{background:#C0392B}62%{background:#C0392B}70%{background:#2E5BFF}100%{background:#2E5BFF}}
+.cl .wheel{width:15cqw;height:15cqw;border-radius:50%;background:conic-gradient(#f00,#ff0,#0f0,#0ff,#00f,#f0f,#f00);position:relative;animation:pop .6s .3s both}
+.cl .wheel::before{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle,#fff 0,rgba(255,255,255,0) 70%)}
+.cl .wheel b{position:absolute;width:2cqw;height:2cqw;border-radius:50%;border:.35cqw solid #fff;box-shadow:0 0 0 .15cqw rgba(0,0,0,.4);left:25%;top:45%;animation:pt 4.2s .8s both}
+@keyframes pt{0%{left:25%;top:50%}30%{left:25%;top:50%}38%{left:78%;top:40%}62%{left:78%;top:40%}70%{left:24%;top:22%}100%{left:24%;top:22%}}
+.cl .ico{width:9cqw;height:9cqw;border-radius:2cqw;background:#fff;color:#14203F;display:grid;place-items:center;font:800 3.4cqw var(--disp);box-shadow:0 1cqw 2.6cqw rgba(0,0,0,.4);animation:pop .6s 2.6s both}
+.cl .ico+p{margin:.8cqw 0 0;font:500 1.2cqw var(--body);color:var(--m2);text-align:center}
+/* Scène : jour du match (table de marque + stats) */
+.tb{padding:1.6cqw 2cqw;border-radius:1.4cqw;background:#F6F8FC;color:#14203F;animation:slideR .6s .4s both}
+.tb .th{font:700 1.5cqw var(--body)}.tb .th small{display:block;font:500 1.2cqw var(--body);color:#5B6785}
+.tb .r{display:flex;justify-content:space-between;align-items:center;padding:.7cqw 0;border-top:1px solid #E3E8F4;font:600 1.5cqw var(--body);animation:up .5s var(--d) both}
+.tb .r span{color:#5B6785;font-weight:500}
+.tb .r b{background:#C9F2DD;color:#0B5B36;padding:.35cqw 1.2cqw;border-radius:99px;font:700 1.3cqw var(--body)}
+.stt{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2cqw}
+.stt div{padding:1.4cqw;border-radius:1.2cqw;background:rgba(255,255,255,.07);text-align:center;animation:pop .5s var(--d) both}
+.stt strong{display:block;font:800 4.4cqw/1 var(--disp);color:var(--gold);font-variant-numeric:tabular-nums}
+.stt small{font:600 1.15cqw var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--m2)}
+.shot{padding:1.3cqw 2cqw;border-radius:1.4cqw;background:rgba(255,255,255,.07);animation:up .6s 3.6s both;font:600 1.4cqw var(--body)}
+.shot .l{display:flex;align-items:center;gap:1.2cqw;margin-top:.7cqw}
+.shot .l span{width:11cqw;color:var(--m2);font-weight:500}.shot .l i{display:block;height:1.2cqw;border-radius:99px;background:var(--gold);width:var(--w);transform-origin:left;animation:grow2 .7s var(--d) both}
+
 @media (prefers-reduced-motion:reduce){
   .stage *{animation:none!important;transition:none!important}
   .hl,.chip,.pill.w{display:none}
@@ -197,7 +236,7 @@ h2{margin:30px 0 12px;font:800 26px/1 var(--disp);text-transform:uppercase}
     <div class="stage" id="stage">
 
       <!-- 1. Accroche -->
-      <div class="sc mid s1" data-i="0">
+      <div class="sc mid s1">
         <div id="chips"></div>
         <div class="hl">Un club, c'est des dizaines de choses à gérer</div>
         <div class="lgbox"><img src="icon-192.png" alt="" style="width:100%;height:100%;border-radius:2.3cqw;display:block"></div>
@@ -205,8 +244,36 @@ h2{margin:30px 0 12px;font:800 26px/1 var(--disp);text-transform:uppercase}
         <div class="lgt">Tout le club, dans une seule appli</div>
       </div>
 
+      <!-- Premiers pas -->
+      <div class="sc" data-k="pp">
+        <div><p class="kick">Démarrage</p><h2 class="ttl" data-d=".2">Ton club prêt en 15 minutes</h2><p class="sub">Cinq étapes qui se cochent toutes seules.</p></div>
+        <div class="ui">
+          <div class="pp">
+            <div class="pt"><b>Premiers pas</b><span id="pp-n">0 / 5</span></div>
+            <div class="pb"><i id="pp-b"></i></div>
+            <div class="st f" style="--d:1.3s"><div class="ck">1</div><div>Logo et couleurs du club</div></div>
+            <div class="st f" style="--d:2s"><div class="ck">2</div><div>Créer tes équipes</div></div>
+            <div class="st f" style="--d:2.7s"><div class="ck">3</div><div>Inviter tes coachs</div></div>
+            <div class="st f" style="--d:3.4s"><div class="ck">4</div><div>Ajouter tes licenciés<small>Import Excel ou lien d'inscription</small></div></div>
+            <div class="st f" style="--d:4.1s"><div class="ck">5</div><div>Placer un premier entraînement</div></div>
+            <div class="fin">Ton club est prêt !</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Couleurs du club -->
+      <div class="sc" data-k="cl">
+        <div><p class="kick">Personnalisation</p><h2 class="ttl" data-d=".2">Ton club à ton image</h2><p class="sub">Tes couleurs, ton logo, jusque dans l'icône de l'appli.</p></div>
+        <div class="cl">
+          <div class="wheel"><b></b></div>
+          <div class="app"><div class="h"><span class="lg">BC</span>Basket Club</div>
+            <div class="b"><i style="width:80%"></i><i style="width:60%"></i><em>Convoquer</em></div></div>
+          <div><div class="ico">BC</div><p>Icône de l'appli</p></div>
+        </div>
+      </div>
+
       <!-- 2. Licences -->
-      <div class="sc" data-i="1">
+      <div class="sc">
         <div><p class="kick">Licences</p><h2 class="ttl" data-d=".2">Les licences, sans paperasse</h2><p class="sub">Une fiche, une validation, et le joueur est inscrit.</p></div>
         <div class="ui">
           <div class="lic">
@@ -224,7 +291,7 @@ h2{margin:30px 0 12px;font:800 26px/1 var(--disp);text-transform:uppercase}
       </div>
 
       <!-- 3. Planning et convocations -->
-      <div class="sc" data-i="2">
+      <div class="sc" data-k="plan">
         <div><p class="kick">Planning</p><h2 class="ttl" data-d=".2">Chaque convocation part en un geste</h2><p class="sub">Vous voyez tout de suite qui a répondu.</p></div>
         <div class="ui" style="gap:1cqw">
           <div class="ev" style="--d:.7s"><b>MAR</b><span>18:30</span><div>Entraînement<small>U13 Garçons</small></div></div>
@@ -239,7 +306,7 @@ h2{margin:30px 0 12px;font:800 26px/1 var(--disp);text-transform:uppercase}
       </div>
 
       <!-- 4. Communauté -->
-      <div class="sc" data-i="3">
+      <div class="sc">
         <div><p class="kick">Communauté</p><h2 class="ttl" data-d=".2">Un message, et tout le monde est prévenu</h2></div>
         <div class="phones">
           <div class="phw">
@@ -256,8 +323,23 @@ h2{margin:30px 0 12px;font:800 26px/1 var(--disp);text-transform:uppercase}
         </div>
       </div>
 
+      <!-- Jour du match -->
+      <div class="sc" data-k="mt">
+        <div><p class="kick">Match</p><h2 class="ttl" data-d=".2">Le jour du match, tout est prêt</h2><p class="sub">Table de marque tirée au sort, stats avancées en direct.</p></div>
+        <div class="ui" style="gap:1.2cqw">
+          <div class="tb"><div class="th">Table de marque · samedi 14:00<small>U15 Garçons · tirage automatique</small></div>
+            <div class="r" style="--d:.9s"><span>Table</span><b>Sarah L.</b></div>
+            <div class="r" style="--d:1.3s"><span>Chronomètre</span><b>Noah D.</b></div>
+            <div class="r" style="--d:1.7s"><span>Arbitre</span><b>Yanis B.</b></div></div>
+          <div class="stt"><div style="--d:2.4s"><strong>18/34</strong><small>Tirs</small></div><div style="--d:2.7s"><strong>22</strong><small>Rebonds</small></div><div style="--d:3s"><strong>11</strong><small>Passes</small></div></div>
+          <div class="shot"><b>Points par joueur</b>
+            <div class="l"><span>Lina M.</span><i style="--w:70%;--d:3.9s"></i></div>
+            <div class="l"><span>Inès K.</span><i style="--w:48%;--d:4.1s"></i></div></div>
+        </div>
+      </div>
+
       <!-- 5. Jour J -->
-      <div class="sc" data-i="4">
+      <div class="sc" data-k="tr">
         <div><p class="kick">Tournois</p><h2 class="ttl" data-d=".2">Le jour J, tout est sur grand écran</h2><p class="sub">Scores en direct, classements et prochains matchs.</p></div>
         <div class="ui" style="gap:1.2cqw">
           <div class="crt" style="--d:.6s"><div class="h">Terrain 1 · U15 · Poule <span class="live">Direct</span></div>
@@ -273,7 +355,7 @@ h2{margin:30px 0 12px;font:800 26px/1 var(--disp);text-transform:uppercase}
       </div>
 
       <!-- 6. Compta -->
-      <div class="sc" data-i="5">
+      <div class="sc" data-k="cp">
         <div><p class="kick">Comptabilité</p><h2 class="ttl" data-d=".2">La comptabilité se tient toute seule</h2><p class="sub">Licences, buvette, sponsors : tout s'additionne.</p></div>
         <div class="ui" style="gap:1.2cqw">
           <div class="leg"><span><i style="background:#E3B341"></i>Licences</span><span><i style="background:#4CC38A"></i>Buvette</span><span><i style="background:#6FA8FF"></i>Sponsors</span></div>
@@ -284,7 +366,7 @@ h2{margin:30px 0 12px;font:800 26px/1 var(--disp);text-transform:uppercase}
       </div>
 
       <!-- 7. Final -->
-      <div class="sc mid s7" data-i="6">
+      <div class="sc mid s7">
         <div class="lgbox"><img src="icon-192.png" alt="" style="width:100%;height:100%;border-radius:2.3cqw;display:block"></div>
         <div class="lgn">General Manager</div>
         <div class="lgt">Toute la vie du club, dans une seule appli</div>
@@ -298,7 +380,7 @@ h2{margin:30px 0 12px;font:800 26px/1 var(--disp);text-transform:uppercase}
       <button class="btn" id="prev" type="button">Précédent</button>
       <button class="btn main" id="play" type="button">Pause</button>
       <button class="btn" id="next" type="button">Suivant</button>
-      <span class="time" id="time" aria-live="off">0:00 / 0:48</span>
+      <span class="time" id="time" aria-live="off">0:00 / 1:03</span>
     </div>
     <div class="seg" id="seg" role="group" aria-label="Scènes"></div>
   </section>
@@ -312,13 +394,16 @@ h2{margin:30px 0 12px;font:800 26px/1 var(--disp);text-transform:uppercase}
 <script>
 (function(){
   var SC=[
-    {d:6,n:"Accroche",v:"Un club, c'est des licences, des plannings, des messages, de la comptabilité… Tout part dans tous les sens."},
-    {d:7,n:"Licences",v:"Les licences se remplissent et se valident en quelques clics. Plus de papiers perdus."},
-    {d:7,n:"Planning et convocations",v:"Un planning clair, et chaque convocation part en un geste. Vous voyez qui répond."},
-    {d:7,n:"Communauté",v:"Un message dans la communauté, et chacun reçoit la notification sur son téléphone."},
-    {d:8,n:"Tournois",v:"Le jour du tournoi : scores, classements et prochains matchs, sur grand écran."},
-    {d:7,n:"Comptabilité",v:"Licences, buvette, sponsors : la comptabilité se met à jour et le bilan sort en PDF."},
-    {d:6,n:"Final",v:"General Manager. Toute la vie du club, dans une seule appli."}
+    {k:"in",d:6,n:"Accroche",v:"Un club, c'est des licences, des plannings, des messages, de la comptabilité… Tout part dans tous les sens."},
+    {k:"pp",d:6,n:"Premiers pas",v:"Dès l'ouverture, cinq étapes guidées : le club est prêt en quinze minutes."},
+    {k:"cl",d:5,n:"Couleurs du club",v:"Vos couleurs, votre logo : l'appli est à l'image de votre club."},
+    {k:"li",d:7,n:"Licences",v:"Les licences se remplissent et se valident en quelques clics. Plus de papiers perdus."},
+    {k:"plan",d:7,n:"Planning et convocations",v:"Un planning clair, et chaque convocation part en un geste. Vous voyez qui répond."},
+    {k:"co",d:5,n:"Communauté",v:"Un message dans la communauté, et chacun reçoit la notification sur son téléphone."},
+    {k:"mt",d:6,n:"Jour du match",v:"Table de marque et arbitrage tirés au sort, stats avancées pendant le match."},
+    {k:"tr",d:8,n:"Tournois",v:"Le jour du tournoi : scores, classements et prochains matchs, sur grand écran."},
+    {k:"cp",d:7,n:"Comptabilité",v:"Licences, buvette, sponsors : la comptabilité se met à jour et le bilan sort en PDF."},
+    {k:"fin",d:6,n:"Final",v:"General Manager. Toute la vie du club, dans une seule appli."}
   ];
   var TOTAL=SC.reduce(function(a,s){return a+s.d},0);
   var reduced=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -392,11 +477,13 @@ h2{margin:30px 0 12px;font:800 26px/1 var(--disp);text-transform:uppercase}
 
   function paint(){
     var t=Math.min(lt,SC[idx].d);
-    if(idx===2){var n=DOT_D.filter(function(d){return d<=t}).length;$("cnt").textContent=n+" / 10 ont répondu"}
-    if(idx===4){var e=ease((t-1)/4.8);
+    var K=SC[idx].k;
+    if(K==="pp"){var np=[1.3,2,2.7,3.4,4.1].filter(function(d){return d<=t}).length;$("pp-n").textContent=np+" / 5";$("pp-b").style.width=(np*20)+"%"}
+    if(K==="plan"){var n=DOT_D.filter(function(d){return d<=t}).length;$("cnt").textContent=n+" / 10 ont répondu"}
+    if(K==="tr"){var e=ease((t-1)/4.8);
       $("a1").textContent=Math.round(24*e);$("b1").textContent=Math.round(19*e);
       $("a2").textContent=Math.round(17*e);$("b2").textContent=Math.round(21*e)}
-    if(idx===5)$("n-tot").textContent=Math.round(12480*ease((t-3.4)/2.4)).toLocaleString("fr-FR")+" €";
+    if(K==="cp")$("n-tot").textContent=Math.round(12480*ease((t-3.4)/2.4)).toLocaleString("fr-FR")+" €";
     var g=SC[idx].t0+t;
     $("time").textContent=mmss(g)+" / "+mmss(TOTAL);
     segs.forEach(function(b,k){var p=k<idx?1:k>idx?0:t/SC[k].d;b.style.setProperty("--p",p)});
