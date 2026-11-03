@@ -127,6 +127,30 @@ footer a{color:#c9d3e8;margin-right:18px}
 }
 
 /* Demande d'essai */
+.of-ov{position:fixed;inset:0;background:rgba(5,11,22,.72);z-index:100;display:none;align-items:center;justify-content:center;padding:16px}
+.of-ov.on{display:flex}
+.of{position:relative;width:100%;max-width:440px;max-height:100%;overflow:auto;background:#fff;color:#0b1630;border-radius:22px;box-shadow:0 24px 60px rgba(0,0,0,.45)}
+.of-top{background:#0b1630;color:#fff;padding:22px 24px 20px;border-bottom:3px solid #D4AF37;border-radius:22px 22px 0 0}
+.of-tag{display:inline-block;font-size:11px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:#0b1630;background:#F2D57E;padding:5px 10px;border-radius:999px}
+.of-top h3{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:34px;line-height:1.02;margin:12px 44px 0 0;text-wrap:balance}
+.of-bd{padding:22px 24px 24px;display:flex;flex-direction:column;gap:16px}
+.of-price{display:flex;align-items:baseline;gap:12px;row-gap:46px;flex-wrap:wrap;padding-top:46px}
+.of-new{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:64px;line-height:.9}
+.of-new small{font-size:22px;font-weight:700;color:#5a6785}
+.of-was{position:relative;display:inline-block;font-size:20px;font-weight:700;color:#C62828;text-decoration:line-through;text-decoration-thickness:2px}
+.of-off{position:absolute;left:0;bottom:100%;margin-bottom:4px;white-space:nowrap;font-size:28px;font-weight:800;color:#C62828;border:3px solid #C62828;border-radius:11px;padding:2px 14px;line-height:1.35;letter-spacing:.3px;text-decoration:none}
+.of-until{font-size:14px;font-weight:700;background:#fbf3d6;border:1px solid #ecd98a;border-radius:10px;padding:10px 12px}
+.of-until span{color:#7a5d00}
+.of ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px}
+.of li{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;line-height:1.4;color:#243252}
+.of li svg{flex:none;margin-top:2px}
+.of-cta{display:flex;flex-direction:column;gap:8px}
+.of-cta .btn{width:100%;border:0;cursor:pointer;font-family:inherit}
+.of-later{background:transparent;color:#5a6785;font-weight:700;min-height:44px}
+.of-fine{font-size:12px;color:#5a6785;line-height:1.5;margin:0}
+.of-x{position:absolute;top:10px;right:10px;width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,255,255,.12);color:#fff;font-size:22px;line-height:1;cursor:pointer}
+.of-x:focus-visible,.of-later:focus-visible,.of-cta .btn:focus-visible{outline:3px solid #F2D57E;outline-offset:2px}
+@media(max-width:440px){.of-new{font-size:54px}.of-price{column-gap:10px}.of-off{font-size:24px}}
 .ess-ov{position:fixed;inset:0;background:rgba(5,11,22,.6);z-index:100;display:none;align-items:flex-end;justify-content:center}
 .ess-ov.on{display:flex}
 @media(min-width:700px){.ess-ov{align-items:center}}
@@ -489,6 +513,23 @@ ph.querySelectorAll('.ph-p').forEach(function(p){p.classList.toggle('on',+p.data
 document.getElementById('ph-ti').textContent=ti[i];});});})();
 </script>
 
+<div class="of-ov" id="of-ov" role="dialog" aria-modal="true" aria-labelledby="of-t">
+  <div class="of">
+    <button class="of-x" id="of-x" type="button" aria-label="Fermer">×</button>
+    <div class="of-top"><span class="of-tag">Offre de lancement</span><h3 id="of-t">Le Premium à 150&nbsp;€ jusqu'à la fin de l'année</h3></div>
+    <div class="of-bd">
+      <div class="of-price"><span class="of-new">150&nbsp;€<small> / an</small></span><span class="of-was"><span class="of-off">-50&nbsp;%</span>300&nbsp;€ / an</span></div>
+      <div class="of-until">Valable jusqu'au <b>31 décembre 2026</b> · <span id="of-rest"></span></div>
+      <ul>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1B7F4B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Licences sans limite et comptabilité complète</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1B7F4B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Reçus CERFA, bilan PDF et exports</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1B7F4B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Factures sponsors, buvette et stock reliés à la comptabilité</li>
+      </ul>
+      <div class="of-cta"><button class="btn gold" id="of-go" type="button">Démarrer l'essai gratuit 30 jours</button><button class="btn of-later" id="of-later" type="button">Plus tard</button></div>
+      <p class="of-fine">Essai gratuit, sans engagement. Pour les clubs qui souscrivent et règlent le Premium avant le 31/12/2026 : 150&nbsp;€ la première année, puis 300&nbsp;€ / an.</p>
+    </div>
+  </div>
+</div>
 <div class="ess-ov" id="ess-ov" role="dialog" aria-modal="true" aria-labelledby="ess-t">
   <form class="ess" id="ess-form" novalidate>
     <h3 id="ess-t">Essai gratuit 30 jours</h3>
@@ -565,6 +606,20 @@ $("e-annuler").onclick=fermer;
 ov.addEventListener("click",(e)=>{ if(e.target===ov) fermer(); });
 document.addEventListener("keydown",(e)=>{ if(e.key==="Escape") fermer(); });
 if(location.hash==="#essai") ouvrir();
+// Offre de lancement : modale à l'ouverture jusqu'au 31/12/2026, puis masquée 7 jours après « Plus tard ».
+(function(){
+  const o=$("of-ov"), FIN=new Date("2026-12-31T23:59:59+01:00");
+  function fermerOffre(){ o.classList.remove("on"); document.body.style.overflow=""; try{ localStorage.setItem("gm_offre_vue",String(Date.now())); }catch(e){} }
+  $("of-x").onclick=fermerOffre; $("of-later").onclick=fermerOffre;
+  $("of-go").onclick=()=>{ fermerOffre(); ouvrir(); };
+  o.addEventListener("click",(e)=>{ if(e.target===o) fermerOffre(); });
+  document.addEventListener("keydown",(e)=>{ if(e.key==="Escape"&&o.classList.contains("on")) fermerOffre(); });
+  if(new Date()>FIN||location.hash==="#essai") return;
+  try{ const v=Number(localStorage.getItem("gm_offre_vue")||0); if(v&&Date.now()-v<7*86400000) return; }catch(e){}
+  const j=Math.max(1,Math.ceil((FIN-new Date())/86400000));
+  $("of-rest").textContent=j>1?"plus que "+j+" jours":"dernier jour";
+  setTimeout(()=>{ if(ov.classList.contains("on")) return; o.classList.add("on"); document.body.style.overflow="hidden"; $("of-go").focus(); },900);
+})();
 let fb=null;
 async function firestore(){
   if(fb) return fb;
