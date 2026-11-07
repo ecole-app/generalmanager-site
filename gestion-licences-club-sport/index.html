@@ -65,13 +65,6 @@ details p{margin:0;padding:0 20px 18px;font-size:15px;line-height:1.6;color:#3d4
 footer{background:#050b16;color:#a9b6d1;font-size:13px}
 footer .wrap{padding-top:28px;padding-bottom:28px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
 footer a{color:#c9d3e8;margin-right:18px}
-  html{scroll-padding-top:128px}
-  .hd{padding:8px 16px;row-gap:4px}
-  .logo span{font-size:16px;letter-spacing:.2px}
-  .logo{order:1}.badge{order:2;padding:8px 12px;font-size:13px;gap:6px}
-  nav{order:3;flex:1 1 100%;justify-content:flex-start;overflow-x:auto;gap:2px}
-  nav a{padding:10px 9px}
-  .hero{padding-top:44px;padding-bottom:56px}.hero h1{font-size:46px}
 .hero>div:last-child.rv{transform:translateY(48px) scale(.97)}
 .hero>div:last-child.rv.in{transform:none}
 
@@ -81,8 +74,15 @@ footer a{color:#c9d3e8;margin-right:18px}
 .prose .blk{margin-bottom:34px}
 .more a{display:inline-block;margin:0 14px 10px 0;font-weight:700}
 .crumb{font-size:13px;color:#a9b6d1;margin-bottom:6px}.crumb a{color:#F2D57E}
-@media(min-width:701px){.hd{flex-wrap:nowrap}}
-@media(max-width:700px){.hero h1{font-size:40px}.prose h2{font-size:28px}nav{display:none}}
+@media (max-width:760px){
+  html{scroll-padding-top:128px}
+  .hd{padding:8px 16px;row-gap:4px}
+  .logo span{font-size:16px;letter-spacing:.2px}
+  .logo{order:1}.badge{order:2;padding:8px 12px;font-size:13px;gap:6px}
+  nav{order:3;flex:1 1 100%;justify-content:flex-start;overflow-x:auto;gap:2px}
+  nav a{padding:10px 9px}
+  .hero{padding-top:44px;padding-bottom:56px}.hero h1{font-size:40px}.prose h2{font-size:28px}
+}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Le paiement bloque-t-il la validation d'une licence ?", "acceptedAnswer": {"@type": "Answer", "text": "Non. Une licence se valide même si elle n'est pas payée. Les impayés passent par le suivi et les relances que vous envoyez vous-même."}}, {"@type": "Question", "name": "Combien de licences peut-on gérer ?", "acceptedAnswer": {"@type": "Answer", "text": "L'offre gratuite va jusqu'à 60 licences par saison, le Pack Standard jusqu'à 300. Au-delà, le Pack Premium est nécessaire. Les licences déjà enregistrées ne sont jamais perdues."}}, {"@type": "Question", "name": "Les parents doivent-ils créer un compte pour inscrire leur enfant ?", "acceptedAnswer": {"@type": "Answer", "text": "Non. Ils reçoivent un lien et remplissent la fiche en ligne. Une fois la licence validée, le club leur donne un accès pour suivre leur enfant."}}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://accueil.generalmanagerapp.fr/"}, {"@type": "ListItem", "position": 2, "name": "Gestion des licences", "item": "https://accueil.generalmanagerapp.fr/gestion-licences-club-sport/"}]}</script>
@@ -91,8 +91,13 @@ footer a{color:#c9d3e8;margin-right:18px}
 <header>
   <div class="wrap hd">
     <a class="logo" href="/"><img src="/icon-192.png" alt="" width="36" height="36" style="border-radius:10px;display:block"><span>GENERAL MANAGER</span></a>
-    <nav><a href="/#modules">Modules</a><a href="/#tarifs">Tarifs</a><a href="/#faq">FAQ</a><a href="/#contact">Contact</a></nav>
-    <a class="badge" href="https://generalmanagerapp.fr">Se connecter</a>
+    <nav>
+      <a href="/#modules">Modules</a><a href="/#independants">Indépendants</a><a href="/#tarifs">Tarifs</a><a href="/#faq">FAQ</a><a href="/#contact">Contact</a>
+    </nav>
+    <a class="badge" href="https://generalmanagerapp.fr">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0b1630" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+      Se connecter
+    </a>
   </div>
 </header>
 <main>
@@ -112,7 +117,7 @@ footer a{color:#c9d3e8;margin-right:18px}
     <div><div class="panel"><h3>En bref</h3><ul><li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Fiche d&#x27;inscription en ligne avec un code</li><li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Validation par le dirigeant</li><li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Montant attendu et suivi des paiements</li><li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Relances par SMS ou e-mail pré-remplis</li><li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Aides Pass&#x27;Sport et Pass&#x27;Région suivies</li></ul></div></div>
   </div>
 </div>
-<section class="prose"><div class="wrap"><div class="blk"><h2>Une inscription sans papier</h2><p>Le club donne un code d&#x27;inscription. Les parents remplissent la fiche depuis leur téléphone, sans créer de compte. Vous la contrôlez puis la validez : le joueur apparaît dans l&#x27;effectif, et la famille reçoit ensuite son accès pour suivre son enfant.</p></div><div class="blk"><h2>Le suivi des paiements, sans bloquer personne</h2><p>Vous saisissez le montant attendu et vous voyez qui a payé. Les relances sont des SMS ou des e-mails pré-remplis que vous envoyez vous-même. La validation d&#x27;une licence n&#x27;est jamais bloquée par le paiement, et une suspension n&#x27;est proposée qu&#x27;après plusieurs relances, c&#x27;est toujours vous qui décidez.</p></div><div class="blk"><h2>Les aides Pass&#x27;Sport et Pass&#x27;Région</h2><p>L&#x27;aide fait partie du paiement de la licence. Vous suivez son statut (à saisir, saisi, remboursé) et elle apparaît dans la comptabilité avec son numéro, sans jamais bloquer une validation.</p></div><div class="blk"><h2>Des données bien protégées</h2><p>Les fiches d&#x27;inscription (adresse, santé, contacts) ne sont visibles que par le staff du club. Les familles ne voient que leurs propres enfants. Hébergement Google Firebase, conforme RGPD, avec un contrat de sous-traitance fourni, et export Excel de vos données à tout moment. Pour consolider la sécurité des comptes, chacun peut activer la double authentification : après le mot de passe, un code à 6 chiffres généré par son téléphone. C&#x27;est recommandé pour les dirigeants.</p></div></div></section>
+<section class="prose"><div class="wrap"><div class="blk"><h2>Une inscription sans papier</h2><p>Le club donne un code d&#x27;inscription. Les parents remplissent la fiche depuis leur téléphone, sans créer de compte. Vous la contrôlez puis la validez : le joueur apparaît dans l&#x27;effectif, et la famille reçoit ensuite son accès pour suivre son enfant.</p></div><div class="blk"><h2>Le suivi des paiements, sans bloquer personne</h2><p>Vous saisissez le montant attendu et vous voyez qui a payé. Les relances sont des SMS ou des e-mails pré-remplis que vous envoyez vous-même. La validation d&#x27;une licence n&#x27;est jamais bloquée par le paiement, et une suspension n&#x27;est proposée qu&#x27;après plusieurs relances, c&#x27;est toujours vous qui décidez.</p></div><div class="blk"><h2>Les aides Pass&#x27;Sport et Pass&#x27;Région</h2><p>L&#x27;aide fait partie du paiement de la licence. Vous suivez son statut (à saisir, saisi, remboursé) et elle apparaît dans la comptabilité avec son numéro, sans jamais bloquer une validation.</p></div><div class="blk"><h2>Des données bien protégées</h2><p>Les fiches d&#x27;inscription (adresse, santé, contacts) ne sont visibles que par le staff du club. Les familles ne voient que leurs propres enfants. Hébergement Google Firebase, conforme RGPD, avec un contrat de sous-traitance fourni, et export Excel de vos données à tout moment.</p></div></div></section>
 <section style="padding-top:0"><div class="wrap" style="max-width:860px"><h2 style="font-size:34px;margin-bottom:16px">Questions fréquentes</h2><details><summary>Le paiement bloque-t-il la validation d&#x27;une licence ?</summary><p>Non. Une licence se valide même si elle n&#x27;est pas payée. Les impayés passent par le suivi et les relances que vous envoyez vous-même.</p></details><details><summary>Combien de licences peut-on gérer ?</summary><p>L&#x27;offre gratuite va jusqu&#x27;à 60 licences par saison, le Pack Standard jusqu&#x27;à 300. Au-delà, le Pack Premium est nécessaire. Les licences déjà enregistrées ne sont jamais perdues.</p></details><details><summary>Les parents doivent-ils créer un compte pour inscrire leur enfant ?</summary><p>Non. Ils reçoivent un lien et remplissent la fiche en ligne. Une fois la licence validée, le club leur donne un accès pour suivre leur enfant.</p></details></div></section>
 <section style="padding-top:0"><div class="wrap more"><p style="font-weight:800;margin:0 0 10px">Pour aller plus loin</p><a href="/logiciel-gestion-club-basket/">Gestion de club de basket</a><a href="/comptabilite-association-sportive/">Comptabilité d&#x27;association</a><a href="/organiser-tournoi-de-basket/">Organiser un tournoi</a><a href="/">Découvrir General Manager</a></div></section>
 </main>

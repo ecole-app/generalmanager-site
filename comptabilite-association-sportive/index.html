@@ -65,13 +65,6 @@ details p{margin:0;padding:0 20px 18px;font-size:15px;line-height:1.6;color:#3d4
 footer{background:#050b16;color:#a9b6d1;font-size:13px}
 footer .wrap{padding-top:28px;padding-bottom:28px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
 footer a{color:#c9d3e8;margin-right:18px}
-  html{scroll-padding-top:128px}
-  .hd{padding:8px 16px;row-gap:4px}
-  .logo span{font-size:16px;letter-spacing:.2px}
-  .logo{order:1}.badge{order:2;padding:8px 12px;font-size:13px;gap:6px}
-  nav{order:3;flex:1 1 100%;justify-content:flex-start;overflow-x:auto;gap:2px}
-  nav a{padding:10px 9px}
-  .hero{padding-top:44px;padding-bottom:56px}.hero h1{font-size:46px}
 .hero>div:last-child.rv{transform:translateY(48px) scale(.97)}
 .hero>div:last-child.rv.in{transform:none}
 
@@ -81,8 +74,15 @@ footer a{color:#c9d3e8;margin-right:18px}
 .prose .blk{margin-bottom:34px}
 .more a{display:inline-block;margin:0 14px 10px 0;font-weight:700}
 .crumb{font-size:13px;color:#a9b6d1;margin-bottom:6px}.crumb a{color:#F2D57E}
-@media(min-width:701px){.hd{flex-wrap:nowrap}}
-@media(max-width:700px){.hero h1{font-size:40px}.prose h2{font-size:28px}nav{display:none}}
+@media (max-width:760px){
+  html{scroll-padding-top:128px}
+  .hd{padding:8px 16px;row-gap:4px}
+  .logo span{font-size:16px;letter-spacing:.2px}
+  .logo{order:1}.badge{order:2;padding:8px 12px;font-size:13px;gap:6px}
+  nav{order:3;flex:1 1 100%;justify-content:flex-start;overflow-x:auto;gap:2px}
+  nav a{padding:10px 9px}
+  .hero{padding-top:44px;padding-bottom:56px}.hero h1{font-size:40px}.prose h2{font-size:28px}
+}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "La comptabilité est-elle incluse dans l'offre gratuite ?", "acceptedAnswer": {"@type": "Answer", "text": "Non, c'est une fonction du Pack Premium. Pendant l'essai de 30 jours, toutes les fonctions sont ouvertes pour la tester."}}, {"@type": "Question", "name": "Peut-on donner l'accès à un trésorier seulement ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui. Le dirigeant peut ouvrir la comptabilité, l'inventaire ou les sponsors à un compte du bureau, sans lui donner le reste de l'appli."}}, {"@type": "Question", "name": "Que deviennent les données si on quitte le Premium ?", "acceptedAnswer": {"@type": "Answer", "text": "Elles sont conservées. L'archive PDF reste téléchargeable, et les écritures automatiques réapparaissent si vous repassez en Premium."}}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://accueil.generalmanagerapp.fr/"}, {"@type": "ListItem", "position": 2, "name": "Comptabilité d'association", "item": "https://accueil.generalmanagerapp.fr/comptabilite-association-sportive/"}]}</script>
@@ -91,8 +91,13 @@ footer a{color:#c9d3e8;margin-right:18px}
 <header>
   <div class="wrap hd">
     <a class="logo" href="/"><img src="/icon-192.png" alt="" width="36" height="36" style="border-radius:10px;display:block"><span>GENERAL MANAGER</span></a>
-    <nav><a href="/#modules">Modules</a><a href="/#tarifs">Tarifs</a><a href="/#faq">FAQ</a><a href="/#contact">Contact</a></nav>
-    <a class="badge" href="https://generalmanagerapp.fr">Se connecter</a>
+    <nav>
+      <a href="/#modules">Modules</a><a href="/#independants">Indépendants</a><a href="/#tarifs">Tarifs</a><a href="/#faq">FAQ</a><a href="/#contact">Contact</a>
+    </nav>
+    <a class="badge" href="https://generalmanagerapp.fr">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0b1630" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+      Se connecter
+    </a>
   </div>
 </header>
 <main>
@@ -112,7 +117,7 @@ footer a{color:#c9d3e8;margin-right:18px}
     <div><div class="panel"><h3>En bref</h3><ul><li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Recettes et dépenses de la saison</li><li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Notes de frais</li><li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Reçus fiscaux CERFA</li><li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Bilan de saison en PDF et exports</li><li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Accès possible pour le trésorier</li></ul></div></div>
   </div>
 </div>
-<section class="prose"><div class="wrap"><div class="blk"><h2>Des écritures qui viennent de la vie du club</h2><p>Quand une licence est payée, quand la buvette est clôturée ou qu&#x27;un mouvement de stock est enregistré, la ligne arrive en comptabilité. Moins de ressaisie, moins d&#x27;oublis en fin de saison.</p></div><div class="blk"><h2>Ce que contient la comptabilité</h2><p>Recettes et dépenses, notes de frais, reçus fiscaux CERFA pour les dons, factures de sponsors, bilan de saison en PDF et exports. La TVA est affichée « non applicable, art. 293 B du CGI » par défaut, et peut être activée par club.</p></div><div class="blk"><h2>Un accès pour le trésorier</h2><p>Le dirigeant peut ouvrir la comptabilité à un trésorier ou à un membre du bureau, sans lui donner le reste de l&#x27;appli. Chacun a l&#x27;accès dont il a besoin. Pour protéger les comptes qui touchent à l&#x27;argent, la double authentification est recommandée : un code à 6 chiffres en plus du mot de passe.</p></div><div class="blk"><h2>Une fonction du Pack Premium</h2><p>La comptabilité complète fait partie du Pack Premium. Si vous repassez en Standard, vos données sont conservées et l&#x27;archive PDF reste téléchargeable. Vous pouvez la tester pendant les 30 jours d&#x27;essai, avec toutes les fonctions ouvertes.</p></div></div></section>
+<section class="prose"><div class="wrap"><div class="blk"><h2>Des écritures qui viennent de la vie du club</h2><p>Quand une licence est payée, quand la buvette est clôturée ou qu&#x27;un mouvement de stock est enregistré, la ligne arrive en comptabilité. Moins de ressaisie, moins d&#x27;oublis en fin de saison.</p></div><div class="blk"><h2>Ce que contient la comptabilité</h2><p>Recettes et dépenses, notes de frais, reçus fiscaux CERFA pour les dons, factures de sponsors, bilan de saison en PDF et exports. La TVA est affichée « non applicable, art. 293 B du CGI » par défaut, et peut être activée par club.</p></div><div class="blk"><h2>Un accès pour le trésorier</h2><p>Le dirigeant peut ouvrir la comptabilité à un trésorier ou à un membre du bureau, sans lui donner le reste de l&#x27;appli. Chacun a l&#x27;accès dont il a besoin.</p></div><div class="blk"><h2>Une fonction du Pack Premium</h2><p>La comptabilité complète fait partie du Pack Premium. Si vous repassez en Standard, vos données sont conservées et l&#x27;archive PDF reste téléchargeable. Vous pouvez la tester pendant les 30 jours d&#x27;essai, avec toutes les fonctions ouvertes.</p></div></div></section>
 <section style="padding-top:0"><div class="wrap" style="max-width:860px"><h2 style="font-size:34px;margin-bottom:16px">Questions fréquentes</h2><details><summary>La comptabilité est-elle incluse dans l&#x27;offre gratuite ?</summary><p>Non, c&#x27;est une fonction du Pack Premium. Pendant l&#x27;essai de 30 jours, toutes les fonctions sont ouvertes pour la tester.</p></details><details><summary>Peut-on donner l&#x27;accès à un trésorier seulement ?</summary><p>Oui. Le dirigeant peut ouvrir la comptabilité, l&#x27;inventaire ou les sponsors à un compte du bureau, sans lui donner le reste de l&#x27;appli.</p></details><details><summary>Que deviennent les données si on quitte le Premium ?</summary><p>Elles sont conservées. L&#x27;archive PDF reste téléchargeable, et les écritures automatiques réapparaissent si vous repassez en Premium.</p></details></div></section>
 <section style="padding-top:0"><div class="wrap more"><p style="font-weight:800;margin:0 0 10px">Pour aller plus loin</p><a href="/logiciel-gestion-club-basket/">Gestion de club de basket</a><a href="/gestion-licences-club-sport/">Gestion des licences</a><a href="/organiser-tournoi-de-basket/">Organiser un tournoi</a><a href="/">Découvrir General Manager</a></div></section>
 </main>

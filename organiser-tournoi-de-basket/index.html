@@ -65,13 +65,6 @@ details p{margin:0;padding:0 20px 18px;font-size:15px;line-height:1.6;color:#3d4
 footer{background:#050b16;color:#a9b6d1;font-size:13px}
 footer .wrap{padding-top:28px;padding-bottom:28px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
 footer a{color:#c9d3e8;margin-right:18px}
-  html{scroll-padding-top:128px}
-  .hd{padding:8px 16px;row-gap:4px}
-  .logo span{font-size:16px;letter-spacing:.2px}
-  .logo{order:1}.badge{order:2;padding:8px 12px;font-size:13px;gap:6px}
-  nav{order:3;flex:1 1 100%;justify-content:flex-start;overflow-x:auto;gap:2px}
-  nav a{padding:10px 9px}
-  .hero{padding-top:44px;padding-bottom:56px}.hero h1{font-size:46px}
 .hero>div:last-child.rv{transform:translateY(48px) scale(.97)}
 .hero>div:last-child.rv.in{transform:none}
 
@@ -81,8 +74,15 @@ footer a{color:#c9d3e8;margin-right:18px}
 .prose .blk{margin-bottom:34px}
 .more a{display:inline-block;margin:0 14px 10px 0;font-weight:700}
 .crumb{font-size:13px;color:#a9b6d1;margin-bottom:6px}.crumb a{color:#F2D57E}
-@media(min-width:701px){.hd{flex-wrap:nowrap}}
-@media(max-width:700px){.hero h1{font-size:40px}.prose h2{font-size:28px}nav{display:none}}
+@media (max-width:760px){
+  html{scroll-padding-top:128px}
+  .hd{padding:8px 16px;row-gap:4px}
+  .logo span{font-size:16px;letter-spacing:.2px}
+  .logo{order:1}.badge{order:2;padding:8px 12px;font-size:13px;gap:6px}
+  nav{order:3;flex:1 1 100%;justify-content:flex-start;overflow-x:auto;gap:2px}
+  nav a{padding:10px 9px}
+  .hero{padding-top:44px;padding-bottom:56px}.hero h1{font-size:40px}.prose h2{font-size:28px}
+}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Les participants doivent-ils créer un compte ?", "acceptedAnswer": {"@type": "Answer", "text": "Non. Ils s'inscrivent avec un lien et reçoivent un billet avec QR code. Les bénévoles ont leur propre pass, sans compte non plus."}}, {"@type": "Question", "name": "Quelles fonctions du tournoi sont dans le Standard ?", "acceptedAnswer": {"@type": "Answer", "text": "La création de l'événement, l'affiche, les inscriptions et réservations avec billet QR, l'entrée, les bénévoles, les équipes, poules et planning, et la page publique du tournoi."}}, {"@type": "Question", "name": "Et le jour du tournoi ?", "acceptedAnswer": {"@type": "Answer", "text": "Le jour J (table de marque, scores en direct, grand écran, absences) est une fonction du Pack Premium, que vous pouvez essayer pendant les 30 jours d'essai."}}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://accueil.generalmanagerapp.fr/"}, {"@type": "ListItem", "position": 2, "name": "Organiser un tournoi", "item": "https://accueil.generalmanagerapp.fr/organiser-tournoi-de-basket/"}]}</script>
@@ -91,8 +91,13 @@ footer a{color:#c9d3e8;margin-right:18px}
 <header>
   <div class="wrap hd">
     <a class="logo" href="/"><img src="/icon-192.png" alt="" width="36" height="36" style="border-radius:10px;display:block"><span>GENERAL MANAGER</span></a>
-    <nav><a href="/#modules">Modules</a><a href="/#tarifs">Tarifs</a><a href="/#faq">FAQ</a><a href="/#contact">Contact</a></nav>
-    <a class="badge" href="https://generalmanagerapp.fr">Se connecter</a>
+    <nav>
+      <a href="/#modules">Modules</a><a href="/#independants">Indépendants</a><a href="/#tarifs">Tarifs</a><a href="/#faq">FAQ</a><a href="/#contact">Contact</a>
+    </nav>
+    <a class="badge" href="https://generalmanagerapp.fr">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0b1630" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+      Se connecter
+    </a>
   </div>
 </header>
 <main>
