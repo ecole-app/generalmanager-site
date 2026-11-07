@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /video-gm.html
+
+Sitemap: https://accueil.generalmanagerapp.fr/sitemap.xml
